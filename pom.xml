@@ -161,7 +161,12 @@
     <repositories>
         <!-- Add Exchange repository to consume DataWeave library from Exchange -->
         <!-- You can find more reference at https://docs.mulesoft.com/exchange/to-publish-assets-maven#consume-an-exchange-asset-with-maven -->
-        
+        <repository>
+			<id>anypoint-exchange-v3</id>
+			<name>Anypoint Exchange</name>
+			<url>https://maven.anypoint.mulesoft.com/api/v3/maven</url>
+			<layout>default</layout>
+	</repository>
         <repository>
             <id>exchange</id>
             <name>Exchange Repository</name>
