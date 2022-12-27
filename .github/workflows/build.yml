@@ -28,7 +28,7 @@ jobs:
         distribution: 'zulu'
         java-version: 8
     - name: Add repo credentials
-      uses: s4u/maven-settings-action@v2.6.0
+      uses: s4u/maven-settings-action@v2.8.0
       with:
         servers: |
           [{
