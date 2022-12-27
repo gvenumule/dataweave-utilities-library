@@ -36,9 +36,9 @@ jobs:
            "username": "${{ secrets.anypoint_platform_username }}",
            "password": "${{ secrets.anypoint_platform_password }}"
           }]
-    - name: Deploy to Exchange
-      run: |
-        mvn deploy
+  #  - name: Deploy to Exchange
+  #    run: |
+  #      mvn deploy
     
     - name: Build with Maven
       run: mvn -B package --file pom.xml
