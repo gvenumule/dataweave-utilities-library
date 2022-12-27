@@ -19,8 +19,64 @@
         <data.weave.testing.framework.version>1.1.3</data.weave.testing.framework.version>
         <data.weave.maven.plugin.version>0.3.2</data.weave.maven.plugin.version>
         <groupId>1903b795-baff-4ab9-9488-160c7147a624</groupId>
+        <app.runtime>4.4.0</app.runtime>
+        <mule.maven.plugin.version>3.7.1</mule.maven.plugin.version>
+        <app.name>amartinez-github-actions-3</app.name>
+	<environment>Sandbox</environment>
     </properties>
-
+    
+   <build>
+        <resources>
+            <resource>
+                <directory>src/main/dw</directory>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>src/test/dw</directory>
+            </testResource>
+            <testResource>
+                <directory>src/test/resources</directory>
+            </testResource>
+        </testResources>
+        <plugins>
+            <plugin>
+                <groupId>org.mule.weave</groupId>
+                <artifactId>data-weave-maven-plugin</artifactId>
+                <version>${data.weave.maven.plugin.version}</version>
+                <extensions>true</extensions>
+            </plugin>
+            <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>3.0.0</version>
+	     </plugin>
+	     <plugin>
+				<groupId>org.mule.tools.maven</groupId>
+				<artifactId>mule-maven-plugin</artifactId>
+				<version>${mule.maven.plugin.version}</version>
+				<extensions>true</extensions>
+				<configuration>
+					<cloudHubDeployment>
+						<uri>https://anypoint.mulesoft.com</uri>
+						<muleVersion>${app.runtime}</muleVersion>
+						<username>${anypoint.username}</username>
+						<password>${anypoint.password}</password>
+						<applicationName>${app.name}</applicationName>
+						<environment>${environment}</environment>
+						<workerType>MICRO</workerType>
+						<region>us-east-2</region>
+						<workers>1</workers>
+						<objectStoreV2>true</objectStoreV2>
+					</cloudHubDeployment>
+					<classifier>mule-application</classifier>
+				</configuration>
+			</plugin>
+        </plugins>
+    </build>
     <dependencies>
         <dependency>
             <groupId>org.mule.weave</groupId>
@@ -88,32 +144,7 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <resources>
-            <resource>
-                <directory>src/main/dw</directory>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
-        </resources>
-        <testResources>
-            <testResource>
-                <directory>src/test/dw</directory>
-            </testResource>
-            <testResource>
-                <directory>src/test/resources</directory>
-            </testResource>
-        </testResources>
-        <plugins>
-            <plugin>
-                <groupId>org.mule.weave</groupId>
-                <artifactId>data-weave-maven-plugin</artifactId>
-                <version>${data.weave.maven.plugin.version}</version>
-                <extensions>true</extensions>
-            </plugin>
-        </plugins>
-    </build>
+    
 
     <!-- Add Exchange repository to publish your DataWeave library to Exchange -->
     <!-- You can find more reference at https://docs.mulesoft.com/exchange/to-publish-assets-maven#publish-an-asset-to-exchange-using-maven -->
