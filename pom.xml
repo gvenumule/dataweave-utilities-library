@@ -142,6 +142,11 @@
             <version>${data.weave.testing.framework.version}</version>
             <scope>test</scope>
         </dependency>
+	 <dependency>
+    <groupId>org.mule.tools.maven</groupId>
+    <artifactId>exchange-mule-maven-plugin</artifactId>
+    <version>0.0.17</version>
+</dependency>
     </dependencies>
 
     
